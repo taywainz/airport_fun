@@ -27,7 +27,29 @@ Missing data is very common in dataframes. To easily identify missing data, `inf
 Missing data can skew the statistics of your data. Below are some options on how to handle missing data in a dataframe:
 * `dropna()` - least preferred method. By default, it drops any row that contains at least 1 null value.
   * `dropna(axis=1)` to drop any _column_ that contains a null value
+* `fillna()` - fills null values with a specified value
+* `SimpleImputer` - replaces null values in each column using a descriptive statistic like mean, median, or most frequent
+  * This class is heavily used in machine learning since it can impute values on the training set, validation set, and test set.</br>
+</br>
+
+We are interested in looking at flight delays for flights based on the time of year, airline, or origin / destination airport. The following steps are taken to clean the necessary columns:
+*  Create a copy of the original `flights` dataset
+*  Select columns of interest
+*  Drop rows where "DEPATURE_DELAY" and "ARRIVAL_DELAY" are null
+> ```python
+> flight_delays = flights.copy()
+>
+> ## viewing columns
+> flight_delays.info()
+> 
+> ## selecting columns
+> flight_delays = flight_delays[['YEAR','MONTH','AIRLINE','ORIGIN_AIRPORT','DESTINATION_AIRPORT','DEPARTURE_DELAY','ARRIVAL_DELAY']]
+>
+> ## dropping rows
+> flight_delays = flight_delays.dropna(subset=['DEPARTURE_DELAY','ARRIVAL_DELAY'])
+> ```
 
 > [!CAUTION]
-> Before making any data manipulation, make a copy of the original dataframe! A copy allows you to manipulate the dataframe without changing the original dataframe. To make a copy, create a new variable and pass it `df.copy()`.
-
+> Always make a copy of your dataframe! This is good practice in case you make an incorrect manipulation. If you do not make a copy, any change made will affect the original dataframe. 
+</br>
+All done cleaning the data! In (insert example here), we will continue on to determine delay stats based on time of year, airline, and origin / destination airport.
