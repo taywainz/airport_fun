@@ -52,4 +52,4 @@ We are interested in looking at flight delays for flights based on the time of y
 > [!CAUTION]
 > Always make a copy of your dataframe! This is good practice in case you make an incorrect manipulation. If you do not make a copy, any change made will affect the original dataframe. 
 </br>
-All done cleaning the data! In (insert example here), we will continue on to determine delay stats based on time of year, airline, and origin / destination airport.
+All done cleaning the data! In my flight_delay_analysis.md , we will continue on to determine delay stats based on time of year, airline, and origin / destination airport.
